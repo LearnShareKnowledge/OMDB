@@ -1,0 +1,100 @@
+<!--
+HTML: Displaying the Search page of Movie App
+Controller: searchCtrl
+View Desc : Page where users can lookup for a movie 
+-->
+<div class="container">
+        <div class="heading search_box">
+            <h3>Welcome to Omdb Movie App . You can now search for your favorite movie here !!</h3>
+        </div>
+        <div class="section">
+           <div class = "search_container">
+            <form name="userForm" class="form_box">
+              <div class = "search_box">
+                  <input type="text" placeholder="movie title" class="input_Search"  ng-model="searchValue" required/>
+                  <div class="plot_box">
+                        <select name="plot" ng-model="selectedPlot" class="select_box">
+                                <option selected value="">Select Plot</option>
+                                <option value="short">Short</option>
+                                <option value="full">Full</option>
+                        </select>
+                  </div>      
+              </div> 
+              <div class="button_box">
+                  <button id="searchButton" type="button" ng-click="getMoviews()" class="search_button"
+                  ng-disabled="userForm.$invalid">Search</button>
+              </div>
+            </form>
+           </div>
+        </div>
+        <div class="section">
+            <div class="article" ng-if="movieData">
+                 <h1 class="findHeader">Results for <span class="findSearchTerm">{{movieData.Title}}</span></h1>
+                 <div class="moviedetails_box">
+                     <img src={{movieData.Poster}} alt="image-not-found" class="poster_box"/>
+                     <div class="pd30">
+                            <table>
+                                    <tbody>
+                                    <tr><td><b>Year</b></td><td>{{movieData.Year}}</td></tr>
+                                    <tr><td><b>Rated</b></td><td>{{movieData.Rated}}</td></tr>
+                                    <tr><td><b>Released</b></td><td>{{movieData.Released}}</td></tr>
+                                    <tr><td><b>Runtime</b></td><td>{{movieData.Runtime}}</td></tr>
+                                    <tr>
+                                        <td><b>Genre</b></td>
+                                        <td>
+                                            <ul>
+                                                <li ng-repeat="genre in genres">{{genre}}</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr><td><b>Director</b></td><td>{{movieData.Director}}</td></tr>
+                                    <tr>
+                                        <td><b>Writer</b></td>
+                                        <td>
+                                            <ul>
+                                                <li ng-repeat="writer in writers">{{writer}}</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Actors</b></td>
+                                        <td>
+                                            <ul>
+                                                <li ng-repeat="actor in actors">{{actor}}</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr><td><b>Plot</b></td><td>{{moviePlot}}
+                                        <span><a href="" ng-if="lengthOverflow" ng-click="readMore()">Read More</a></span>
+                                    </td></tr>
+                                    <tr>
+                                        <td><b>Language</b></td>
+                                        <td>
+                                            <ul>
+                                                <li ng-repeat="lang in languages">{{lang}}</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr><td><b>Awards</b></td><td>{{movieData.Awards}}</td></tr>
+                                    <tr>
+                                        <td><b>Ratings</b></td>
+                                        <td>
+                                            <ul>
+                                                <li ng-repeat="rating in movieData.Ratings">{{rating.Value}}</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr><td><b>Imdb Rating</b></td><td>{{movieData.imdbRating}}</td></tr>
+                                    <tr><td><b>Imdb Votes</b></td><td>{{movieData.imdbVotes}}</td></tr>
+                                    <tr><td><b>Type</b></td><td>{{movieData.Type}}</td></tr>
+                                </tbody>
+                                </table>
+                     </div>
+                </div>
+            </div>
+            <div class="article" ng-if="movieNotFound">
+                <h1 class="findHeader">Results for <span class="findSearchTerm">{{searchValue}}</span></h1>
+                <div>{{movieNotFound.Error}}</div>
+            </div>
+        </div>
+    </div>

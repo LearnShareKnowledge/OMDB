@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="heading">
+      <h3>Take a look at the featured movies of this month !</h3>
+  </div>
+  <div class="Section">
+    <ul>
+      <li ng-repeat="movie in featuredList">
+        <div class="article">
+          <div class="moviedetails_box">
+            <img src={{movie.Poster}} alt="image-not-found" class="poster_featured"/>
+            <div class="pd30">
+              <table>
+                <tbody>
+                <tr><td><b>Title</b></td><td>{{movie.Title}}</td></tr>
+                <tr><td><b>Year</b></td><td>{{movie.Year}}</td></tr>
+                <tr><td><b>Awards</b></td><td>{{movie.Awards}}</td></tr>
+                <tr><td><b>Plot</b></td><td>{{movie.Plot}}</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
