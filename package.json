@@ -9,6 +9,8 @@
     "angular": "^1.7.5",
     "angular-loader": "^1.7.5",
     "angular-route": "^1.7.5",
+    "cpx": "^1.5.0",
+    "http-server": "^0.11.1",
     "html5-boilerplate": "0.0.1"
   },
   "devDependencies": {
